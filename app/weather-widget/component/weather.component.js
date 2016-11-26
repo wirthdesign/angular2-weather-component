@@ -11,7 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var weather_service_1 = require('../service/weather.service');
 var WeatherComponent = (function () {
-    function WeatherComponent() {
+    function WeatherComponent(service) {
+        this.service = service;
     }
     WeatherComponent = __decorate([
         core_1.Component({
@@ -21,7 +22,7 @@ var WeatherComponent = (function () {
             styleUrls: ['weather.component.css'],
             providers: [weather_service_1.WeatherService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [weather_service_1.WeatherService])
     ], WeatherComponent);
     return WeatherComponent;
 }());

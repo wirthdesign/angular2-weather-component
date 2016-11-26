@@ -10,4 +10,8 @@ import { WeatherService } from '../service/weather.service';
     providers: [ WeatherService ]
 })
 
-export class WeatherComponent {  }
+export class WeatherComponent {
+    constructor(private service: WeatherService) {
+        
+    }
+}
