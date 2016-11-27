@@ -14,6 +14,7 @@ var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var weather_component_1 = require('./weather-widget/component/weather.component');
 var speed_unit_pipe_1 = require('./weather-widget/pipe/speed-unit.pipe');
+var temp_unit_pipe_1 = require('./weather-widget/pipe/temp-unit.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +27,8 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 weather_component_1.WeatherComponent,
-                speed_unit_pipe_1.SpeedUnitPipe
+                speed_unit_pipe_1.SpeedUnitPipe,
+                temp_unit_pipe_1.TempUnitPipe
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
