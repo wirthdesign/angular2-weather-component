@@ -17,8 +17,9 @@ export class WeatherComponent implements OnInit {
     weatherData = new Weather(null, null, null, null, null);
     currentSpeedUnit = "kph";
     currentTempUnit = "fahrenheit";
+    currentLocation = "";
 
-    constructor(private service: WeatherService) {}
+    constructor(private service: WeatherService) { }
 
     ngOnInit() {
         this.getCurrentLocation();
@@ -27,8 +28,9 @@ export class WeatherComponent implements OnInit {
     getCurrentLocation() {
         this.service.getCurrentLocation()
             .subscribe(position => {
-                this.pos = position
-                this.getCurrentWeather()
+                this.pos = position;
+                this.getCurrentWeather();
+                this.getLocationName();
             }),
             err => console.error(err);
     }
@@ -37,13 +39,21 @@ export class WeatherComponent implements OnInit {
         this.service.getCurrentWeather(this.pos.coords.latitude, this.pos.coords.longitude)
             .subscribe(weather => {
                 this.weatherData.temp = weather["currently"]["temperature"],
-                this.weatherData.summary = weather["currently"]["summary"],
-                this.weatherData.wind = weather["currently"]["windSpeed"],
-                this.weatherData.humidity = weather["currently"]["humidity"],
-                this.weatherData.icon = weather["currently"]["icon"],
-                console.log("Weather: ", this.weatherData);
+                    this.weatherData.summary = weather["currently"]["summary"],
+                    this.weatherData.wind = weather["currently"]["windSpeed"],
+                    this.weatherData.humidity = weather["currently"]["humidity"],
+                    this.weatherData.icon = weather["currently"]["icon"],
+                    console.log("Weather: ", this.weatherData);
             },
             err => console.error(err));
+    }
+
+    getLocationName() {
+        this.service.getLocationName(this.pos.coords.latitude, this.pos.coords.longitude)
+            .subscribe(location => {
+                this.currentLocation = location["results"][1]["formatted_address"];
+                console.log("Name: ", location);
+            });
     }
 
 }

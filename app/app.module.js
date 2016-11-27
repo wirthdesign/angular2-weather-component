@@ -22,7 +22,8 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                http_1.JsonpModule
+                http_1.JsonpModule,
+                http_1.HttpModule
             ],
             declarations: [
                 app_component_1.AppComponent,
