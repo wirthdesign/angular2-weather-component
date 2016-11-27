@@ -1,1 +1,4 @@
 /node_modules
+/app/weather-widget/constants/constants.ts
+/app/weather-widget/constants/constants.js
+/app/weather-widget/constants/constants.js.map
