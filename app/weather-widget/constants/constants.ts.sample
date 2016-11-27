@@ -1,0 +1,7 @@
+// DARKSKY - https://darksky.net/dev/
+export const FORECAST_KEY = "";
+export const FORECAST_ROOT = "https://api.darksky.net/forecast/";
+
+// GOOGLE MAPS - https://developers.google.com/maps/documentation/geocoding/get-api-key
+export const GOOGLE_MAP_KEY = "";
+export const GOOGLE_MAP_ROOT = "https://maps.googleapis.com/maps/api/geocode/json";
