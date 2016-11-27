@@ -12,16 +12,18 @@ export class WeatherService {
 
     constructor(private jsonp: Jsonp) {  }
 
-    getCurrentLocation(): [number, number] {
+    getCurrentLocation(): Observable<any> {
         if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                console.log("Position: ", pos.coords.latitude, ",", pos.coords.longitude); // TODO: REMOVE
-                return [pos.coords.latitude, pos.coords.longitude]
-            },
-            err => console.error("Unable to get the position - ", err));
+            return Observable.create(observer => {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    observer.next(pos)
+                }),
+                err => {
+                    return Observable.throw(err);
+                }
+            });
         } else {
-            console.error("Geolocation not available");
-            return [0, 0]
+            return Observable.throw("Geolocation not available");
         }
     }
 
