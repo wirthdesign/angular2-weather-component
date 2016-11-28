@@ -46,7 +46,7 @@ var WeatherComponent = (function () {
                 _this.weatherData.icon = weather["currently"]["icon"],
                 console.log("Weather: ", _this.weatherData);
             _this.setIcon();
-            dataReceived = true;
+            _this.dataReceived = true;
         }, function (err) { return console.error(err); });
     };
     WeatherComponent.prototype.getLocationName = function () {
